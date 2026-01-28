@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page Ceramah Berbayar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .speaker {
+            display: flex;
+            gap: 20px;
+        }
+        .speaker img {
+            width: 150px;
+            border-radius: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            padding: 10px;
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #219150;
+        }
+        .confirmation {
+            background: #ecf9f1;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 5px solid #27ae60;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- FASA 1: MAKLUMAT CERAMAH -->
+    <h1>Ceramah Profesional: Kemahiran Digital Masa Kini</h1>
+
+    <div class="speaker">
+        <img src="ceramah picture.jfif" alt="Penceramah">
+        <div>
+            <p><strong>Nama:</strong> Dr. Ahmad Zaki</p>
+            <p><strong>Jawatan:</strong> Pensyarah Kanan</p>
+            <p><strong>Kepakaran:</strong> Teknologi Maklumat & Pembangunan Web</p>
+        </div>
+    </div>
+
+    <h2>Sinopsis</h2>
+    <p>
+        Ceramah ini memberi pendedahan kepada peserta tentang kemahiran digital
+        terkini yang diperlukan dalam industri serta tips kerjaya.
+    </p>
+
+    <h2>Logistik</h2>
+    <p><strong>Tarikh:</strong> 30 Ogos 2026</p>
+    <p><strong>Masa:</strong> 9.00 pagi - 1.00 petang</p>
+    <p><strong>Lokasi:</strong> Dewan Utama Politeknik</p>
+
+    <h2>Yuran</h2>
+    <p><strong>RM 2,500.00</strong> bagi setiap slot</p>
+
+    <h2>Hubungi</h2>
+    <p>Email: ceramah@politeknik.edu.my</p>
+    <p>Telefon: 012-3456789</p>
+
+    <hr>
+
+    <!-- FASA 2: BORANG PENDAFTARAN -->
+    <h2>Borang Pendaftaran</h2>
+
+    <form id="bookingForm">
+        <label>Nama Penuh</label>
+        <input type="text" id="nama" required>
+
+        <label>Alamat E-mel</label>
+        <input type="email" id="email" required>
+
+        <label>Nombor Telefon</label>
+        <input type="text" id="telefon" required>
+
+        <label>Kategori Peserta</label>
+        <select id="kategori" required>
+            <option value="">-- Pilih --</option>
+            <option>Pelajar</option>
+            <option>Pensyarah</option>
+            <option>Orang Awam</option>
+            <option>Korporat</option>
+        </select>
+
+        <label>Bilangan Slot</label>
+        <input type="number" id="slot" min="1" required>
+
+        <label>Bukti Pembayaran</label>
+        <input type="file" id="resit" required>
+
+        <label>
+            <input type="checkbox" id="terma" required>
+            Saya bersetuju dengan terma dan syarat
+        </label>
+
+        <br><br>
+        <button type="submit">Hantar</button>
+    </form>
+
+    <!-- FASA 3: PAPARAN PENGESAHAN -->
+    <div id="result"></div>
+
+</div>
+
+<script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const hargaUnit = 2500;
+        const nama = document.getElementById("nama").value;
+        const email = document.getElementById("email").value;
+        const telefon = document.getElementById("telefon").value;
+        const kategori = document.getElementById("kategori").value;
+        const slot = document.getElementById("slot").value;
+        const jumlah = hargaUnit * slot;
+
+        document.getElementById("result").innerHTML = `
+            <div class="confirmation">
+                <h2>Pengesahan Pendaftaran</h2>
+                <p><strong>Nama:</strong> ${nama}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Telefon:</strong> ${telefon}</p>
+                <p><strong>Kategori:</strong> ${kategori}</p>
+                <p><strong>Bilangan Slot:</strong> ${slot}</p>
+                <p><strong>Jumlah Yuran:</strong> RM ${jumlah.toFixed(2)}</p>
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>
